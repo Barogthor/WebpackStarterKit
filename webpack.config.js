@@ -6,7 +6,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const devMode = process.env.NODE_ENV !== "production";
 
 let config = {
-    entry: {bundle: "./src/index.js"},
+    entry: {bundle: "./src/index.tsx"},
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js']
+    },
     output: {
         path: path.resolve(__dirname, "assets"),
         publicPath: "/assets/",
@@ -33,6 +36,10 @@ let config = {
                     "sass-loader",
                     "postcss-loader",
                 ]
+            },
+            {
+                test: /\.tsx?$/,
+                loader: 'awesome-typescript-loader'
             }
         ]
     },

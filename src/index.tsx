@@ -1,7 +1,8 @@
 import "../scss/app.scss"
-import React from "react";
-import ReactDOM from "react-dom";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 import thunkMiddleware from 'redux-thunk'
+import App from "components/App";
 
 const Index = () => {
     return <div>Hello React !!!!</div>;
@@ -9,7 +10,7 @@ const Index = () => {
 
 
 ReactDOM.render(
-    Index(),
+    <App color={"blue"} />,
     document.getElementById('root')
 );
 
