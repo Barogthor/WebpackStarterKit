@@ -1,4 +1,18 @@
 import "../scss/app.scss"
+import React from "react";
+import ReactDOM from "react-dom";
+import thunkMiddleware from 'redux-thunk'
+
+const Index = () => {
+    return <div>Hello React !!!!</div>;
+};
+
+
+ReactDOM.render(
+    Index(),
+    document.getElementById('root')
+);
+
 
 const c1 = 0;
 let v = "";
