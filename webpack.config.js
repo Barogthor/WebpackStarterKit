@@ -5,10 +5,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const devMode = process.env.NODE_ENV !== "production";
 
+const htmlPlugin = new HtmlWebpackPlugin({
+    template: "assets/index.html",
+    filename: "../public/index.html",
+    inject: true,
+    hash: true,
+});
+
 let config = {
     entry: {bundle: "./src/index.tsx"},
     resolve: {
-        extensions: ['.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js'],
+        alias: {
+            pages: path.resolve(__dirname, '..', 'src/pages/'),
+            components: path.resolve(__dirname, '..', 'src/components/'),
+        }
     },
     output: {
         path: path.resolve(__dirname, "assets"),
@@ -51,17 +62,10 @@ let config = {
         port: 8090
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+        htmlPlugin,
         new MiniCssExtractPlugin({
-            filename: 'stylesheets/style.css',
+            filename: devMode ? "stylesheets/style.css" : "stylesheets/style.min.css"
         }),
-        new HtmlWebpackPlugin({
-            inject: true,
-            hash: true,
-            template: 'assets/index.html',
-            filename: '../public/index.html'
-        }),
-
     ],
     watch: true,
     watchOptions: {
