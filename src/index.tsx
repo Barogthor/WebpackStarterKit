@@ -2,15 +2,21 @@ import "../scss/app.scss"
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import thunkMiddleware from 'redux-thunk'
-import App from "components/App";
+import App from "./components/App";
+import {applyMiddleware, createStore} from "redux";
+import appReducer from "./reducers/appReducer";
+import Root from "./components/Root";
 
-const Index = () => {
-    return <div>Hello React !!!!</div>;
-};
-
+const store = createStore(
+    appReducer,
+    applyMiddleware(
+        thunkMiddleware,
+        // loggerMiddleware
+    )
+)
 
 ReactDOM.render(
-    <App color={"blue"} />,
+    <Root store={store} />,
     document.getElementById('root')
 );
 

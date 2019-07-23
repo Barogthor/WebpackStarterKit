@@ -1,20 +1,14 @@
 import * as React from 'react';
+import {connect} from "react-redux";
 
-import PageInterface from '../PageInterface';
-
-class App extends React.Component<PageInterface> {
-
-    constructor(props){
-        super(props)
-    }
-
-    render() {
-        return <div>
-            <h1>Welcome to React with Typescript</h1>
-        <p>The color of this page is: {this.props.color}</p>
-        </div>
-        ;
-    }
+const App = ({children}) => {
+    return (
+        <React.Fragment>
+            <div className={"grid-container"}>
+                {children}
+            </div>
+        </React.Fragment>
+    )
 }
 
 export default App;
